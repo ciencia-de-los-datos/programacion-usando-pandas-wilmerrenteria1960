@@ -22,7 +22,9 @@ def pregunta_01():
     40
 
     """
-    return
+    total_filas= len(tbl0)
+    
+    return total_filas
 
 
 def pregunta_02():
