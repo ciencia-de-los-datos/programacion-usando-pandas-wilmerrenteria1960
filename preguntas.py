@@ -54,7 +54,9 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    return
+    cantidad_registros =tbl0.groupby("_c1").size()
+    
+    return cantidad_registros
 
 
 def pregunta_04():
@@ -69,7 +71,9 @@ def pregunta_04():
     E    4.785714
     Name: _c2, dtype: float64
     """
-    return
+    promedio_registro =tbl0.pop("_c0")
+    promedio_registro =tbl0.groupby("_c1").mean()
+    return promedio_registro
 
 
 def pregunta_05():
