@@ -71,8 +71,8 @@ def pregunta_04():
     E    4.785714
     Name: _c2, dtype: float64
     """
-    promedio_registro =tbl0.pop("_c0")
-    promedio_registro =tbl0.groupby("_c1").mean()
+    promedio_registro=tbl0.groupby("_c1")["_c2"].mean()
+    promedio_registro
     return promedio_registro
 
 
@@ -90,7 +90,8 @@ def pregunta_05():
     E    9
     Name: _c2, dtype: int64
     """
-    return
+    valor_maximo=tbl0.groupby("_c1")["_c2"].max()
+    return valor_maximo
 
 
 def pregunta_06():
@@ -102,7 +103,10 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    return
+    tbl1 =tbl1.sort_values(["_c4"])
+    tbl1["_c4"] = tbl1["_c4"].str.upper()
+    valores_unicos=tbl1["_c4"].unique().tolist()
+    return valores_unicos
 
 
 def pregunta_07():
