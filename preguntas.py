@@ -181,7 +181,9 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
-    return
+    table_nueva =pd.DataFrame(tbl0.groupby('_c1')["_c2"].apply(lambda columns: ':'.join(sorted([str(i) for i in columns]))))
+    
+    return table_nueva
 
 
 def pregunta_11():
@@ -200,7 +202,9 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    return
+    table_nueva =pd.DataFrame(tbl1.groupby('_c0')["_c4"].apply(lambda columns: ','.join(sorted([str(i) for i in columns]))))
+    
+    return table_nueva
 
 
 def pregunta_12():
