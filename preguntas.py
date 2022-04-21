@@ -202,7 +202,7 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    table_nueva =pd.DataFrame(tbl1.groupby('_c0')["_c4"].apply(lambda columns: ','.join(sorted([str(i) for i in columns]))))
+    table_nueva =pd.DataFrame(tbl1.groupby('_c0')["_c4"].apply(lambda columns: ','.join(sorted([str(i) for i in columns])))).reset_index()
     
     return table_nueva
 
