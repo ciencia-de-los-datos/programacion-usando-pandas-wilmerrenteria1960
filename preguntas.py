@@ -141,7 +141,10 @@ def pregunta_08():
     39   39   E    5  1998-01-26    44
 
     """
-    return
+    columns_sum = ["_c0", "_c2"]
+    tbl0["suma"] = tbl0[columns_sum].sum(axis =1)
+    
+    return tbl0
 
 
 def pregunta_09():
