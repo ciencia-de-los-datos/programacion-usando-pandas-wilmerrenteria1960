@@ -222,6 +222,7 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
+    tbl2["_c5"] = tbl2["_c5a"].str.cat(tbl2["_c5b"].astype(str), sep =":")
     table_new = pd.DataFrame(tbl2.groupby("_c0")["_c5"].apply(lambda columns: ",".join (sorted([str(i) for i in columns])))).reset_index()
     
     return table_new
