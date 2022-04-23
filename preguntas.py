@@ -22,7 +22,9 @@ def pregunta_01():
     40
 
     """
-    return
+    total_filas= len(tbl0)
+    
+    return total_filas
 
 
 def pregunta_02():
@@ -33,7 +35,9 @@ def pregunta_02():
     4
 
     """
-    return
+    variable = tbl0.shape
+    columna = variable[1] 
+    return columna
 
 
 def pregunta_03():
@@ -50,7 +54,9 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    return
+    cantidad_registros =tbl0.groupby("_c1").size()
+    
+    return cantidad_registros
 
 
 def pregunta_04():
@@ -65,7 +71,9 @@ def pregunta_04():
     E    4.785714
     Name: _c2, dtype: float64
     """
-    return
+    promedio_registro=tbl0.groupby("_c1")["_c2"].mean()
+    promedio_registro
+    return promedio_registro
 
 
 def pregunta_05():
@@ -82,7 +90,8 @@ def pregunta_05():
     E    9
     Name: _c2, dtype: int64
     """
-    return
+    valor_maximo=tbl0.groupby("_c1")["_c2"].max()
+    return valor_maximo
 
 
 def pregunta_06():
@@ -94,7 +103,8 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    return
+    valores_unicos=sorted(tbl1["_c4"].str.upper().unique())
+    return valores_unicos
 
 
 def pregunta_07():
@@ -110,7 +120,8 @@ def pregunta_07():
     E    67
     Name: _c2, dtype: int64
     """
-    return
+    suma_valores=tbl0.groupby("_c1")["_c2"].sum()
+    return suma_valores
 
 
 def pregunta_08():
@@ -128,7 +139,10 @@ def pregunta_08():
     39   39   E    5  1998-01-26    44
 
     """
-    return
+    columns_sum = ["_c0", "_c2"]
+    tbl0["suma"] = tbl0[columns_sum].sum(axis =1)
+    
+    return tbl0
 
 
 def pregunta_09():
@@ -146,7 +160,9 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    return
+    tbl0['year'] = tbl0['_c3'].str[:4]
+    
+    return tbl0
 
 
 def pregunta_10():
@@ -163,7 +179,9 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
-    return
+    table_nueva =pd.DataFrame(tbl0.groupby('_c1')["_c2"].apply(lambda columns: ':'.join(sorted([str(i) for i in columns]))))
+    
+    return table_nueva
 
 
 def pregunta_11():
@@ -182,7 +200,9 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    return
+    table_nueva =pd.DataFrame(tbl1.groupby('_c0')["_c4"].apply(lambda columns: ','.join(sorted([str(i) for i in columns])))).reset_index()
+    
+    return table_nueva
 
 
 def pregunta_12():
@@ -200,7 +220,10 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    return
+    tbl2["_c5"] = tbl2["_c5a"].str.cat(tbl2["_c5b"].astype(str), sep =":")
+    table_new = pd.DataFrame(tbl2.groupby("_c0")["_c5"].apply(lambda columns: ",".join (sorted([str(i) for i in columns])))).reset_index()
+    
+    return table_new
 
 
 def pregunta_13():
@@ -217,4 +240,10 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
-    return
+    new_table =pd.merge(
+    tbl0,
+    tbl2,
+    sort=True
+    )
+    new_table = new_table.groupby("_c1")["_c5b"].sum()
+    return new_table
