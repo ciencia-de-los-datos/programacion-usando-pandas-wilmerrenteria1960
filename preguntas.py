@@ -103,7 +103,7 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    tbl1 =tbl1.sort_values(["_c4"])
+    tbl1 = tbl1.sort_values(["_c4"])
     tbl1["_c4"] = tbl1["_c4"].str.upper()
     valores_unicos=tbl1["_c4"].unique().tolist()
     return valores_unicos
