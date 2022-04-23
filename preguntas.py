@@ -240,4 +240,10 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
-    return
+    new_table =pd.merge(
+    tbl0,
+    tbl2,
+    sort=True
+    )
+    new_table = new_table.groupby("_c1")["_c5b"].sum()
+    return new_table
